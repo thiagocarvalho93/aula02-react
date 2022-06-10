@@ -11,7 +11,7 @@ const Cadastro = () => {
             setPrompt(prevState => prevState + " nome ")
             check = false;
         }
-        if(parseInt(dados.idade) <= 0){
+        if(dados.idade.length == 0){
             setPrompt(prevState => prevState + " idade ")
             check = false;
         }
@@ -24,6 +24,7 @@ const Cadastro = () => {
             check = false;
         }
         if(check){
+            console.log("nome: "+dados.nome+", idade: "+dados.idade+", sexo: "+dados.sexo+", cidade: "+ dados.cidade)
             setDados({nome:"", idade: "", sexo: "", cidade: ""})
             alert("Cadastro enviado com sucesso!")
         }
@@ -33,22 +34,26 @@ const Cadastro = () => {
         <div className="box">
             <div>
                 <input type="text" id="nome" value={dados.nome}
-                onChange={(e) => setDados({...dados, nome: e.target.value})} placeholder="Insira seu nome" />
+                onChange={(e) => setDados({...dados, nome: e.target.value})} 
+                placeholder="Insira seu nome" />
             </div>
             <br/>
             <div>
                 <input type="text" id="idade" value={dados.idade}
-                onChange={(e) => setDados({...dados, idade: e.target.value})} placeholder="Insira sua idade"/>
+                onChange={(e) => setDados({...dados, idade: e.target.value})} 
+                placeholder="Insira sua idade"/>
             </div>
             <br />
             <div>
                 <input type="text" id="sexo" value={dados.sexo}
-                onChange={(e) => setDados({...dados, sexo: e.target.value})} placeholder="Insira seu sexo"/>
+                onChange={(e) => setDados({...dados, sexo: e.target.value})} 
+                placeholder="Insira seu sexo"/>
             </div>
             <br />
             <div>
                 <input type="text" id="cidade" value={dados.cidade}
-                onChange={(e) => setDados({...dados, cidade: e.target.value})} placeholder="Insira sua cidade"/>
+                onChange={(e) => setDados({...dados, cidade: e.target.value})} 
+                placeholder="Insira sua cidade"/>
             </div>
             <h6>{prompt}</h6>
             <button onClick={handleClick}>Enviar</button>
